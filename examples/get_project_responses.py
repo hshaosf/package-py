@@ -36,11 +36,11 @@ class Page():
 
     def get_project_responses(self, _req, _resp):
         """ screendoor page response """
-        api = Screendoor(os.environ['SD_KEY'])
-        response = api.get_project_responses(
+        scrndr = Screendoor(os.environ['SD_KEY'])
+        responses = scrndr.get_project_responses(
             os.environ['SD_PROJECT'],
             {'per_page': 1, 'page' : 1},
             1
             )
         _resp.status = falcon.HTTP_200
-        _resp.body = json.dumps(response)
+        _resp.body = json.dumps(responses)
